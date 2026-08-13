@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "A8F9285YV7.com.honualohak.walkingTerritory",
+        "appIDs": ["A8F9285YV7.com.honualohak.walkingTerritory"],
+        "paths": ["/invite*"],
+        "components": [{ "/": "/invite*" }]
+      }
+    ]
+  }
+}

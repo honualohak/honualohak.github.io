@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Walking Territory - フレンド招待</title>
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: #0B0F14; color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
+  }
+  .card {
+    background: #14191F; border: 1px solid rgba(29,233,182,.4); border-radius: 20px;
+    padding: 32px 24px; margin: 16px; max-width: 340px; width: 100%; text-align: center;
+  }
+  .logo { font-size: 40px; }
+  h1 { font-size: 20px; color: #1DE9B6; margin: 12px 0 4px; }
+  .name { font-size: 17px; font-weight: 700; margin: 16px 0 2px; }
+  .fid { font-family: ui-monospace, monospace; font-size: 13px; color: rgba(255,255,255,.55); }
+  p.desc { font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.7; }
+  a.btn {
+    display: block; background: #1DE9B6; color: #06251d; text-decoration: none;
+    font-weight: 700; font-size: 16px; padding: 14px; border-radius: 999px; margin-top: 20px;
+  }
+  .note { font-size: 12px; color: rgba(255,255,255,.45); margin-top: 14px; line-height: 1.6; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">🏃</div>
+    <h1>Walking Territory</h1>
+    <p class="desc">フレンド招待が届きました！<br>歩いて領地を広げよう。</p>
+    <div class="name" id="name">…</div>
+    <div class="fid" id="fid"></div>
+    <a class="btn" id="open" href="#">アプリで追加する</a>
+    <div class="note">
+      アプリがインストール済みなら、リンクを開くだけでアプリが起動します。<br>
+      このページが表示された場合は、上のボタンからアプリを開くか、
+      先にアプリをインストールしてからもう一度リンクを開いてください。
+    </div>
+  </div>
+  <script>
+    const q = new URLSearchParams(location.search);
+    const id = (q.get("id") || "").toUpperCase();
+    const name = q.get("name") || "";
+    document.getElementById("name").textContent = name || "プレイヤー";
+    document.getElementById("fid").textContent = id;
+    const deepLink = "walkingterritory://add-friend?id=" + encodeURIComponent(id) +
+      "&name=" + encodeURIComponent(name);
+    document.getElementById("open").href = deepLink;
+    if (id) setTimeout(() => { location.href = deepLink; }, 600);
+  </script>
+</body>
+</html>
